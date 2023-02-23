@@ -21,46 +21,44 @@
                         pinBloke--;
                         Console.Write("Hatalı Pin Girişi yaptınız : ");
                         Console.WriteLine("Kalan Hakkınız :  " + pinBloke);
-
                         Console.Write("Lütfen Pin Kodunu Girin : ");
                         pin = Convert.ToInt32(Console.ReadLine());
 
-                    if (pin == reelPin) break;
+                        if (pin == reelPin) break;
 
-                    if (i == pinBloke)
+                        if (i == pinBloke)
                     {
                         Console.WriteLine("Pin Kodunuz Bloke Oldu...");
-                        for (int j = 9; j <= pukBloke; j--)
-                        {
-                            Console.Write("Lütfen Puk Kodunu Girin : ");
-                            puk = Convert.ToInt32(Console.ReadLine());
 
-                           
-                            Console.WriteLine("Kalan Hakkınız :  " + j);
-
-                            if (j == 0)
+                            for (int j = 9; j <= pukBloke; j--)
                             {
-                                Console.WriteLine("Puk Kodunuz Bloke OLdu...\nLütfen Müşteri Hizmetleri İle İletişime Geçiniz.");
-                                Console.Write("Müşteri Temsilcisi Onay Kodu : ");
-                                onayKodu = Convert.ToInt32(Console.ReadLine());
-                                if (onayKodu != musteriTemsilcisiOnayKodu)
+                                Console.Write("Lütfen Puk Kodunu Girin : ");
+                                puk = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("Kalan Hakkınız :  " + j);
+
+                                if (j == 0)
                                 {
-                                    Console.WriteLine("Sistem Kilitlendi...");
+                                    Console.WriteLine("Puk Kodunuz Bloke OLdu...\nLütfen Müşteri Hizmetleri İle İletişime Geçiniz.");
+                                    Console.Write("Müşteri Temsilcisi Onay Kodu : ");
+                                    onayKodu = Convert.ToInt32(Console.ReadLine());
+                                    if (onayKodu != musteriTemsilcisiOnayKodu)
+                                    {
+                                        Console.WriteLine("Sistem Kilitlendi...");
+                                        break;
+                                    }
+                                }
+                                if (puk == reelPuk || onayKodu == musteriTemsilcisiOnayKodu)
+                                {
+                                    reelPin = 1144;
+                                    Console.Write("Yeni pin Giriniz : ");
+                                    reelPin = Convert.ToInt32(Console.ReadLine());
                                     break;
                                 }
                             }
-                            if (puk == reelPuk || onayKodu == musteriTemsilcisiOnayKodu)
-                            {
-                                reelPin = 1144;
-                                Console.Write("Yeni pin Giriniz : ");
-                                reelPin = Convert.ToInt32(Console.ReadLine());
-                                break;
-                            }
                         }
                     }
+                    break;
                 }
-                break;
-            }
                 Console.WriteLine("Açılıyor...");
             }
         }
